@@ -20,7 +20,8 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 
 
@@ -34,55 +35,68 @@
     ========================================== -->
     <section class="hero">
 
+      <!-- 大タイトル -->
       <h1 class="hero__title">
         WEDDING
       </h1>
 
+      <!-- 新郎新婦名 -->
       <p class="hero__names">
         KAITO <span>&amp;</span> EMIRI
       </p>
 
+
       <!-- 表紙写真 -->
       <figure class="hero__photo-frame">
+
         <img
           src="images/hero.png.png"
           alt="海人と絵美莉の写真"
           class="hero__photo"
         >
-      </figure>
 
 
-      <!-- 表紙下部の雑誌風情報欄 -->
-      <div class="hero__bottom">
+        <!-- 写真右下の円形カウントダウン -->
+        <div
+          class="hero-countdown"
+          data-event-date="2026-10-31T13:00:00+09:00"
+          aria-label="結婚式までのカウントダウン"
+        >
 
-        <!-- 開催日 -->
-        <div class="hero__date">
+          <div class="hero-countdown__inner">
 
-          <p class="hero__date-label">
-            WEDDING DAY
-          </p>
+            <p class="hero-countdown__number">
+              100
+            </p>
 
-          <div class="hero__date-main">
-            <span class="hero__date-month">OCT.</span>
-            <span class="hero__date-day">31</span>
-            <span class="hero__date-year">2026</span>
+            <p class="hero-countdown__label">
+              DAYS TO GO
+            </p>
+
           </div>
 
         </div>
 
+      </figure>
 
-        <!-- 表紙用カウントダウン -->
-        <div
-          class="hero-countdown"
-          data-event-date="2026-10-31T13:00:00+09:00"
-        >
-          <p class="hero-countdown__number">
-            100
-          </p>
 
-          <p class="hero-countdown__label">
-            DAYS TO GO
-          </p>
+      <!-- 表紙下部の日付 -->
+      <div class="hero__bottom">
+
+        <div class="hero__date-main">
+
+          <span class="hero__date-month">
+            OCT.
+          </span>
+
+          <span class="hero__date-day">
+            31
+          </span>
+
+          <span class="hero__date-year">
+            2026
+          </span>
+
         </div>
 
       </div>
@@ -98,6 +112,7 @@
       <h2 class="section__title">
         INVITATION
       </h2>
+
 
       <div class="invitation-message__body">
 
@@ -140,6 +155,7 @@
           心より楽しみにしております。
         </p>
 
+
         <div class="invitation-message__closing">
 
           <p>
@@ -163,79 +179,20 @@
     <section class="main-photo-section fade-in">
 
       <figure class="main-photo-section__frame">
+
         <img
           src="images/main-photo.jpg.jpg"
           alt="海人と絵美莉の写真"
           class="main-photo-section__image"
         >
+
       </figure>
 
     </section>
 
 
     <!-- =========================================
-      04. カウントダウン
-    ========================================== -->
-    <section class="section countdown-section fade-in">
-
-      <h2 class="section__title">
-        COUNT DOWN
-      </h2>
-
-      <div
-        class="countdown"
-        data-event-date="2026-10-31T13:00:00+09:00"
-      >
-
-        <p class="countdown__days">
-          100
-        </p>
-
-        <p class="countdown__days-label">
-          DAYS TO GO
-        </p>
-
-        <div class="countdown__time">
-
-          <div class="countdown__unit">
-            <p class="countdown__number countdown__hours">
-              00
-            </p>
-
-            <p class="countdown__label">
-              HOURS
-            </p>
-          </div>
-
-          <div class="countdown__unit">
-            <p class="countdown__number countdown__minutes">
-              00
-            </p>
-
-            <p class="countdown__label">
-              MINUTES
-            </p>
-          </div>
-
-          <div class="countdown__unit">
-            <p class="countdown__number countdown__seconds">
-              00
-            </p>
-
-            <p class="countdown__label">
-              SECONDS
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================
-      05. 日程案内
+      04. 日程案内
     ========================================== -->
     <section class="section schedule fade-in">
 
@@ -300,7 +257,7 @@
 
 
     <!-- =========================================
-      06. Googleマップ
+      05. Googleマップ
     ========================================== -->
     <section class="map-section">
 
@@ -310,6 +267,70 @@
         loading="lazy"
         allowfullscreen
       ></iframe>
+
+    </section>
+
+
+    <!-- =========================================
+      06. 当日のご案内
+    ========================================== -->
+    <section class="section day-guide fade-in">
+
+      <h2 class="section__title">
+        GUIDE
+      </h2>
+
+
+      <!-- 服装 -->
+      <article class="day-guide__item">
+
+        <p class="day-guide__number">
+          01
+        </p>
+
+        <div class="day-guide__content">
+
+          <p class="day-guide__title">
+            DRESS CODE
+          </p>
+
+          <p class="day-guide__text">
+            当日は肩の凝らない、<br>
+            リラックスできる平服で<br>
+            お越しください。
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <div class="day-guide__divider"></div>
+
+
+      <!-- 会場間の移動 -->
+      <article class="day-guide__item">
+
+        <p class="day-guide__number">
+          02
+        </p>
+
+        <div class="day-guide__content">
+
+          <p class="day-guide__title">
+            TRANSFER
+          </p>
+
+          <p class="day-guide__text">
+            挙式後は、パーティー会場までの<br>
+            タクシーを手配しております。<br>
+            皆さまでご一緒に移動いただけますので、<br>
+            どうぞご安心ください。
+          </p>
+
+        </div>
+
+      </article>
 
     </section>
 
@@ -329,21 +350,7 @@
 
 
     <!-- =========================================
-      08. 備考
-    ========================================== -->
-    <section class="section note-section fade-in">
-
-      <p class="note-section__text">
-        男性、女性ともに肩の凝らないような、<br>
-        リラックスできる平服で<br>
-        いらしてくださいませ。
-      </p>
-
-    </section>
-
-
-    <!-- =========================================
-      09. 回答ボタン
+      08. 回答ボタン
     ========================================== -->
     <section class="section rsvp-section fade-in">
 
@@ -360,6 +367,20 @@
 
 
     <!-- =========================================
+      09. 花の線画装飾
+    ========================================== -->
+    <div class="flower-decoration" aria-hidden="true">
+
+      <img
+        src="images/flower-line-bottom.png"
+        alt=""
+        class="flower-decoration__image"
+      >
+
+    </div>
+
+
+    <!-- =========================================
       10. フッター
     ========================================== -->
     <footer class="footer">
@@ -373,7 +394,8 @@
   </main>
 
 
-  <script src="js/script.js"></script>
+  <!-- JavaScript -->
+  <script src="js/script.js?v=6"></script>
 
 </body>
 

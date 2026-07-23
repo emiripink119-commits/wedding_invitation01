@@ -4,7 +4,15 @@
 
 @font-face {
   font-family: "City Boy TM";
-  src: url("../fonts/city-boy-tm.otf") format("opentype");
+
+  /*
+    スマホではWOFF2を優先。
+    読み込めない場合だけOTFを使用。
+  */
+  src:
+    url("../fonts/city-boy-tm.woff2?v=6") format("woff2"),
+    url("../fonts/city-boy-tm.otf?v=6") format("opentype");
+
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,7 +20,7 @@
 
 
 /* =========================================
-  カラー
+  カラー設定
 ========================================= */
 
 :root {
@@ -47,6 +55,7 @@ body {
   color: var(--text-color);
 
   font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
 }
 
 
@@ -110,7 +119,7 @@ a {
 
   min-height: 100svh;
 
-  padding: 28px 22px 32px;
+  padding: 28px 22px 30px;
 
   overflow: hidden;
 
@@ -118,6 +127,7 @@ a {
 }
 
 
+/* 紙の質感 */
 .hero::before {
   content: "";
 
@@ -145,7 +155,10 @@ a {
 }
 
 
-/* WEDDING */
+/* =========================================
+  WEDDINGタイトル
+========================================= */
+
 .hero__title {
   width: 100%;
 
@@ -156,14 +169,17 @@ a {
   font-weight: 400;
 
   line-height: 0.9;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.03em;
 
   text-align: center;
   white-space: nowrap;
 }
 
 
-/* KAITO & EMIRI */
+/* =========================================
+  新郎新婦名
+========================================= */
+
 .hero__names {
   margin-top: 14px;
 
@@ -202,7 +218,7 @@ a {
   width: 91%;
   margin: 25px auto 0;
 
-  overflow: hidden;
+  overflow: visible;
 
   aspect-ratio: 4 / 5;
 
@@ -225,6 +241,8 @@ a {
   position: absolute;
   inset: 0;
 
+  z-index: 1;
+
   pointer-events: none;
 
   background:
@@ -239,19 +257,141 @@ a {
 
 
 /* =========================================
-  表紙下部
+  円形カウントダウン
+========================================= */
+
+.hero-countdown {
+  position: absolute;
+
+  right: -12px;
+  bottom: -37px;
+
+  z-index: 5;
+
+  width: 116px;
+  height: 116px;
+
+  color: var(--ivory);
+  background-color: var(--moss-green);
+
+  border-radius: 50%;
+
+  animation:
+    countdown-float 3.2s ease-in-out infinite;
+}
+
+
+/* 外側の細い円 */
+.hero-countdown::before {
+  content: "";
+
+  position: absolute;
+  inset: -6px;
+
+  border: 1px solid var(--moss-green);
+  border-radius: 50%;
+
+  opacity: 0.65;
+
+  animation:
+    countdown-ring 5s linear infinite;
+}
+
+
+/* 小さな丸アクセント */
+.hero-countdown::after {
+  content: "";
+
+  position: absolute;
+
+  right: 7px;
+  top: 7px;
+
+  width: 11px;
+  height: 11px;
+
+  background-color: var(--ivory);
+
+  border: 2px solid var(--moss-green);
+  border-radius: 50%;
+}
+
+
+.hero-countdown__inner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.hero-countdown__number {
+  font-family: "City Boy TM", sans-serif;
+  font-size: 51px;
+  font-weight: 400;
+
+  line-height: 0.72;
+  letter-spacing: 0.015em;
+}
+
+
+.hero-countdown__label {
+  margin-top: 11px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: 0.15em;
+}
+
+
+@keyframes countdown-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+
+}
+
+
+@keyframes countdown-ring {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+  表紙下部の日付
 ========================================= */
 
 .hero__bottom {
   width: 91%;
+
   margin: 14px auto 0;
+  padding-top: 12px;
 
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 18px;
-
-  padding-top: 11px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
 
   color: var(--moss-green);
 
@@ -259,22 +399,14 @@ a {
 }
 
 
-/* 開催日 */
-.hero__date-label {
-  margin-bottom: 5px;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 8px;
-  font-weight: 700;
-
-  letter-spacing: 0.22em;
-}
-
-
+/*
+  WEDDING DAYは削除し、
+  日付のみ左側へまとめる
+*/
 .hero__date-main {
   display: flex;
   align-items: baseline;
-  gap: 7px;
+  gap: 8px;
 
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
@@ -282,14 +414,14 @@ a {
 
 
 .hero__date-month {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
 }
 
 
 .hero__date-day {
   font-family: "City Boy TM", sans-serif;
-  font-size: 51px;
+  font-size: 52px;
   font-weight: 400;
 
   line-height: 0.78;
@@ -298,37 +430,8 @@ a {
 
 
 .hero__date-year {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
-}
-
-
-/* 表紙カウントダウン */
-.hero-countdown {
-  padding-bottom: 2px;
-
-  text-align: right;
-}
-
-
-.hero-countdown__number {
-  font-family: "City Boy TM", sans-serif;
-  font-size: 39px;
-  font-weight: 400;
-
-  line-height: 0.8;
-  letter-spacing: 0.015em;
-}
-
-
-.hero-countdown__label {
-  margin-top: 7px;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 7px;
-  font-weight: 700;
-
-  letter-spacing: 0.17em;
 }
 
 
@@ -337,8 +440,7 @@ a {
 ========================================= */
 
 .invitation-message {
-  /* 表紙との間を以前より短縮 */
-  padding-top: 54px;
+  padding-top: 46px;
   padding-bottom: 88px;
 
   text-align: center;
@@ -385,98 +487,9 @@ a {
 }
 
 
-/*
-  元画像の縦横比を維持する
-  aspect-ratio・固定height・object-fitは使用しない
-*/
 .main-photo-section__image {
   width: 100%;
   height: auto;
-}
-
-
-/* =========================================
-  カウントダウン
-========================================= */
-
-.countdown-section {
-  padding-top: 56px;
-  padding-bottom: 72px;
-
-  color: var(--ivory);
-  background-color: var(--moss-green);
-
-  text-align: center;
-}
-
-
-.countdown-section .section__title {
-  margin-bottom: 25px;
-
-  color: var(--ivory);
-}
-
-
-.countdown {
-  display: grid;
-  justify-content: center;
-
-  color: var(--ivory);
-}
-
-
-.countdown__days {
-  font-family: "City Boy TM", sans-serif;
-  font-size: 84px;
-  font-weight: 400;
-
-  line-height: 0.85;
-  letter-spacing: 0.015em;
-}
-
-
-.countdown__days-label {
-  margin-top: 7px;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-
-  letter-spacing: 0.25em;
-}
-
-
-.countdown__time {
-  display: flex;
-  justify-content: center;
-  gap: 31px;
-
-  margin-top: 29px;
-}
-
-
-.countdown__unit {
-  min-width: 52px;
-}
-
-
-.countdown__number {
-  font-family: "DM Sans", sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-
-  line-height: 1;
-}
-
-
-.countdown__label {
-  margin-top: 8px;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 7px;
-  font-weight: 600;
-
-  letter-spacing: 0.18em;
 }
 
 
@@ -535,6 +548,7 @@ a {
 
   font-family: "Noto Sans JP", sans-serif;
   font-size: 12px;
+  font-weight: 400;
 
   line-height: 1.9;
 }
@@ -572,6 +586,71 @@ a {
 
 
 /* =========================================
+  当日のご案内
+========================================= */
+
+.day-guide {
+  padding-top: 76px;
+  padding-bottom: 80px;
+}
+
+
+.day-guide__item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 19px;
+
+  width: min(100%, 380px);
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+
+.day-guide__number {
+  color: var(--moss-green);
+
+  font-family: "City Boy TM", sans-serif;
+  font-size: 37px;
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+
+.day-guide__title {
+  margin-bottom: 12px;
+
+  color: var(--moss-green);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+
+.day-guide__text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 2;
+}
+
+
+.day-guide__divider {
+  width: min(100%, 380px);
+  height: 1px;
+
+  margin: 31px auto;
+
+  background-color: rgba(82, 96, 71, 0.35);
+}
+
+
+/* =========================================
   回答期限
 ========================================= */
 
@@ -588,29 +667,10 @@ a {
 .reply-guide__text {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 14px;
+  font-weight: 400;
 
   line-height: 2;
   letter-spacing: 0.04em;
-}
-
-
-/* =========================================
-  備考
-========================================= */
-
-.note-section {
-  padding-top: 66px;
-  padding-bottom: 66px;
-
-  text-align: center;
-}
-
-
-.note-section__text {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 13px;
-
-  line-height: 2;
 }
 
 
@@ -619,8 +679,8 @@ a {
 ========================================= */
 
 .rsvp-section {
-  padding-top: 34px;
-  padding-bottom: 82px;
+  padding-top: 50px;
+  padding-bottom: 38px;
 
   text-align: center;
 }
@@ -663,10 +723,45 @@ a {
 
 
 /* =========================================
+  花の線画装飾
+========================================= */
+
+.flower-decoration {
+  position: relative;
+
+  width: 100%;
+  height: 255px;
+
+  overflow: hidden;
+
+  background-color: var(--ivory);
+}
+
+
+.flower-decoration__image {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: auto;
+
+  /*
+    白背景をアイボリーへなじませる
+  */
+  mix-blend-mode: multiply;
+}
+
+
+/* =========================================
   フッター
 ========================================= */
 
 .footer {
+  position: relative;
+  z-index: 2;
+
   padding: 24px;
 
   color: var(--ivory);
@@ -686,7 +781,7 @@ a {
 
 
 /* =========================================
-  フェード
+  フェードイン
 ========================================= */
 
 .fade-in {
@@ -718,8 +813,8 @@ a {
 
 
   .hero__title {
-    font-size: 62px;
-    letter-spacing: 0.02em;
+    font-size: 61px;
+    letter-spacing: 0.025em;
   }
 
 
@@ -734,18 +829,22 @@ a {
   }
 
 
-  .hero__bottom {
-    gap: 10px;
-  }
+  .hero-countdown {
+    right: -7px;
+    bottom: -32px;
 
-
-  .hero__date-day {
-    font-size: 43px;
+    width: 101px;
+    height: 101px;
   }
 
 
   .hero-countdown__number {
-    font-size: 33px;
+    font-size: 44px;
+  }
+
+
+  .hero__date-day {
+    font-size: 44px;
   }
 
 
@@ -756,7 +855,7 @@ a {
 
 
   .invitation-message {
-    padding-top: 46px;
+    padding-top: 40px;
   }
 
 
@@ -770,11 +869,27 @@ a {
     padding-left: 18px;
   }
 
+
+  .day-guide__item {
+    grid-template-columns: 45px 1fr;
+    gap: 14px;
+  }
+
+
+  .day-guide__number {
+    font-size: 32px;
+  }
+
+
+  .flower-decoration {
+    height: 205px;
+  }
+
 }
 
 
 /* =========================================
-  PC
+  PC表示
 ========================================= */
 
 @media (min-width: 640px) {
@@ -797,7 +912,24 @@ a {
 
   .hero__title {
     font-size: 94px;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.03em;
+  }
+
+}
+
+
+/* =========================================
+  動きを減らす設定への配慮
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 
 }

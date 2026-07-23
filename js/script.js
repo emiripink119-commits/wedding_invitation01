@@ -2,22 +2,36 @@
   スクロール時のフェードイン
 ========================================= */
 
-const fadeElements = document.querySelectorAll(".fade-in");
+const fadeElements =
+  document.querySelectorAll(".fade-in");
 
-const fadeObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.1,
-    rootMargin: "0px 0px -30px 0px",
-  }
-);
+
+const fadeObserver =
+  new IntersectionObserver(
+    (entries, observer) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add(
+            "is-visible"
+          );
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -30px 0px",
+    }
+  );
 
 
 fadeElements.forEach((element) => {
@@ -26,44 +40,30 @@ fadeElements.forEach((element) => {
 
 
 /* =========================================
-  日付差を計算する共通関数
+  残り日数を計算
 ========================================= */
 
-const getCountdownValues = (eventDate) => {
+const getRemainingDays = (eventDate) => {
+
   const now = new Date();
 
   const difference =
     eventDate.getTime() - now.getTime();
 
+
   if (difference <= 0) {
-    return {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
+    return 0;
   }
 
-  const oneSecond = 1000;
-  const oneMinute = oneSecond * 60;
-  const oneHour = oneMinute * 60;
-  const oneDay = oneHour * 24;
 
-  return {
-    days: Math.floor(difference / oneDay),
+  const oneDay =
+    1000 * 60 * 60 * 24;
 
-    hours: Math.floor(
-      (difference % oneDay) / oneHour
-    ),
 
-    minutes: Math.floor(
-      (difference % oneHour) / oneMinute
-    ),
+  return Math.floor(
+    difference / oneDay
+  );
 
-    seconds: Math.floor(
-      (difference % oneMinute) / oneSecond
-    ),
-  };
 };
 
 
@@ -72,90 +72,46 @@ const getCountdownValues = (eventDate) => {
 ========================================= */
 
 const heroCountdown =
-  document.querySelector(".hero-countdown");
+  document.querySelector(
+    ".hero-countdown"
+  );
 
 
 if (heroCountdown) {
-  const heroEventDate =
-    new Date(heroCountdown.dataset.eventDate);
 
-  const heroDays =
+  const eventDate =
+    new Date(
+      heroCountdown.dataset.eventDate
+    );
+
+
+  const daysElement =
     heroCountdown.querySelector(
       ".hero-countdown__number"
     );
 
-  const updateHeroCountdown = () => {
-    const values =
-      getCountdownValues(heroEventDate);
 
-    heroDays.textContent =
-      String(values.days);
+  const updateHeroCountdown = () => {
+
+    const days =
+      getRemainingDays(eventDate);
+
+
+    daysElement.textContent =
+      String(days);
+
   };
+
 
   updateHeroCountdown();
 
+
+  /*
+    日数のみなので1分ごとに更新
+  */
   setInterval(
     updateHeroCountdown,
-    1000
+    60000
   );
-}
 
-
-/* =========================================
-  メインのカウントダウン
-========================================= */
-
-const countdown =
-  document.querySelector(".countdown");
-
-
-if (countdown) {
-  const eventDate =
-    new Date(countdown.dataset.eventDate);
-
-  const daysElement =
-    countdown.querySelector(
-      ".countdown__days"
-    );
-
-  const hoursElement =
-    countdown.querySelector(
-      ".countdown__hours"
-    );
-
-  const minutesElement =
-    countdown.querySelector(
-      ".countdown__minutes"
-    );
-
-  const secondsElement =
-    countdown.querySelector(
-      ".countdown__seconds"
-    );
-
-
-  const updateCountdown = () => {
-    const values =
-      getCountdownValues(eventDate);
-
-    daysElement.textContent =
-      String(values.days);
-
-    hoursElement.textContent =
-      String(values.hours).padStart(2, "0");
-
-    minutesElement.textContent =
-      String(values.minutes).padStart(2, "0");
-
-    secondsElement.textContent =
-      String(values.seconds).padStart(2, "0");
-  };
-
-
-  updateCountdown();
-
-  setInterval(
-    updateCountdown,
-    1000
-  );
 }
