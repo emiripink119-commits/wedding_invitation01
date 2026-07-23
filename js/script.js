@@ -106,9 +106,6 @@ if (heroCountdown) {
   updateHeroCountdown();
 
 
-  /*
-    日数のみなので1分ごとに更新
-  */
   setInterval(
     updateHeroCountdown,
     60000
