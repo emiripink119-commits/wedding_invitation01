@@ -1,0 +1,803 @@
+/* =========================================
+  City Boy TM
+========================================= */
+
+@font-face {
+  font-family: "City Boy TM";
+  src: url("../fonts/city-boy-tm.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* =========================================
+  カラー
+========================================= */
+
+:root {
+  --moss-green: #526047;
+  --text-color: #353a33;
+  --ivory: #f5f0e6;
+  --beige: #d9cfbb;
+  --outer-background: #d7d8d2;
+}
+
+
+/* =========================================
+  基本設定
+========================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  min-height: 100vh;
+
+  background-color: var(--outer-background);
+  color: var(--text-color);
+
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================
+  サイト全体
+========================================= */
+
+.invitation {
+  width: min(100%, 520px);
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  background-color: var(--ivory);
+}
+
+
+.section {
+  position: relative;
+
+  padding: 82px 28px;
+
+  background-color: var(--ivory);
+}
+
+
+.section__title {
+  margin-bottom: 38px;
+
+  color: var(--moss-green);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: 0.1em;
+
+  text-align: center;
+}
+
+
+/* =========================================
+  Hero
+========================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  padding: 28px 22px 32px;
+
+  overflow: hidden;
+
+  background-color: var(--ivory);
+}
+
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.15;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(82, 96, 71, 0.045) 0,
+      rgba(82, 96, 71, 0.045) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* WEDDING */
+.hero__title {
+  width: 100%;
+
+  color: var(--moss-green);
+
+  font-family: "City Boy TM", sans-serif;
+  font-size: clamp(66px, 18vw, 94px);
+  font-weight: 400;
+
+  line-height: 0.9;
+  letter-spacing: 0.025em;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/* KAITO & EMIRI */
+.hero__names {
+  margin-top: 14px;
+
+  color: var(--moss-green);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: 0.25em;
+
+  text-align: center;
+}
+
+
+.hero__names span {
+  display: inline-block;
+
+  margin: 0 5px;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+  表紙写真
+========================================= */
+
+.hero__photo-frame {
+  position: relative;
+
+  width: 91%;
+  margin: 25px auto 0;
+
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+
+  background-color: var(--beige);
+}
+
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.hero__photo-frame::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(245, 240, 230, 0.05),
+      transparent 28%,
+      transparent 74%,
+      rgba(82, 96, 71, 0.12)
+    );
+}
+
+
+/* =========================================
+  表紙下部
+========================================= */
+
+.hero__bottom {
+  width: 91%;
+  margin: 14px auto 0;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 18px;
+
+  padding-top: 11px;
+
+  color: var(--moss-green);
+
+  border-top: 2px solid var(--moss-green);
+}
+
+
+/* 開催日 */
+.hero__date-label {
+  margin-bottom: 5px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+
+.hero__date-main {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+}
+
+
+.hero__date-month {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+
+.hero__date-day {
+  font-family: "City Boy TM", sans-serif;
+  font-size: 51px;
+  font-weight: 400;
+
+  line-height: 0.78;
+  letter-spacing: 0.01em;
+}
+
+
+.hero__date-year {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+
+/* 表紙カウントダウン */
+.hero-countdown {
+  padding-bottom: 2px;
+
+  text-align: right;
+}
+
+
+.hero-countdown__number {
+  font-family: "City Boy TM", sans-serif;
+  font-size: 39px;
+  font-weight: 400;
+
+  line-height: 0.8;
+  letter-spacing: 0.015em;
+}
+
+
+.hero-countdown__label {
+  margin-top: 7px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+
+/* =========================================
+  ごあいさつ
+========================================= */
+
+.invitation-message {
+  /* 表紙との間を以前より短縮 */
+  padding-top: 54px;
+  padding-bottom: 88px;
+
+  text-align: center;
+}
+
+
+.invitation-message__body {
+  color: var(--text-color);
+
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 2.15;
+  letter-spacing: 0.035em;
+}
+
+
+.invitation-message__body p + p {
+  margin-top: 25px;
+}
+
+
+.invitation-message__closing {
+  margin-top: 34px;
+}
+
+
+/* =========================================
+  メイン写真
+========================================= */
+
+.main-photo-section {
+  padding: 0 24px 70px;
+
+  background-color: var(--ivory);
+}
+
+
+.main-photo-section__frame {
+  width: 100%;
+
+  background-color: var(--beige);
+}
+
+
+/*
+  元画像の縦横比を維持する
+  aspect-ratio・固定height・object-fitは使用しない
+*/
+.main-photo-section__image {
+  width: 100%;
+  height: auto;
+}
+
+
+/* =========================================
+  カウントダウン
+========================================= */
+
+.countdown-section {
+  padding-top: 56px;
+  padding-bottom: 72px;
+
+  color: var(--ivory);
+  background-color: var(--moss-green);
+
+  text-align: center;
+}
+
+
+.countdown-section .section__title {
+  margin-bottom: 25px;
+
+  color: var(--ivory);
+}
+
+
+.countdown {
+  display: grid;
+  justify-content: center;
+
+  color: var(--ivory);
+}
+
+
+.countdown__days {
+  font-family: "City Boy TM", sans-serif;
+  font-size: 84px;
+  font-weight: 400;
+
+  line-height: 0.85;
+  letter-spacing: 0.015em;
+}
+
+
+.countdown__days-label {
+  margin-top: 7px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+}
+
+
+.countdown__time {
+  display: flex;
+  justify-content: center;
+  gap: 31px;
+
+  margin-top: 29px;
+}
+
+
+.countdown__unit {
+  min-width: 52px;
+}
+
+
+.countdown__number {
+  font-family: "DM Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+.countdown__label {
+  margin-top: 8px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* =========================================
+  日程
+========================================= */
+
+.schedule {
+  text-align: center;
+}
+
+
+.schedule__block + .schedule__block {
+  margin-top: 50px;
+}
+
+
+.schedule__type {
+  margin-bottom: 15px;
+
+  color: var(--moss-green);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+}
+
+
+.schedule__time {
+  margin-bottom: 18px;
+
+  color: var(--moss-green);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 43px;
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+
+.schedule__place {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  line-height: 1.8;
+}
+
+
+.schedule__address {
+  margin-top: 9px;
+
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 12px;
+
+  line-height: 1.9;
+}
+
+
+.schedule__divider {
+  width: 42px;
+  height: 2px;
+
+  margin: 49px auto;
+
+  background-color: var(--moss-green);
+}
+
+
+/* =========================================
+  Googleマップ
+========================================= */
+
+.map-section {
+  padding: 0;
+
+  background-color: var(--ivory);
+}
+
+
+.map-section iframe {
+  display: block;
+
+  width: 100%;
+  height: 420px;
+
+  border: 0;
+}
+
+
+/* =========================================
+  回答期限
+========================================= */
+
+.reply-guide {
+  padding: 70px 24px;
+
+  color: var(--ivory);
+  background-color: var(--moss-green);
+
+  text-align: center;
+}
+
+
+.reply-guide__text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+  備考
+========================================= */
+
+.note-section {
+  padding-top: 66px;
+  padding-bottom: 66px;
+
+  text-align: center;
+}
+
+
+.note-section__text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+
+  line-height: 2;
+}
+
+
+/* =========================================
+  回答ボタン
+========================================= */
+
+.rsvp-section {
+  padding-top: 34px;
+  padding-bottom: 82px;
+
+  text-align: center;
+}
+
+
+.rsvp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(100%, 360px);
+  min-height: 62px;
+
+  margin: 0 auto;
+
+  color: var(--ivory);
+  background-color: var(--moss-green);
+
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  border: 2px solid var(--moss-green);
+
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.rsvp-button:hover {
+  color: var(--moss-green);
+  background-color: transparent;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+  フッター
+========================================= */
+
+.footer {
+  padding: 24px;
+
+  color: var(--ivory);
+  background-color: var(--moss-green);
+
+  text-align: center;
+}
+
+
+.footer__text {
+  font-family: "DM Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+}
+
+
+/* =========================================
+  フェード
+========================================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================
+  小さいスマホ
+========================================= */
+
+@media (max-width: 380px) {
+
+  .hero {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+
+  .hero__title {
+    font-size: 62px;
+    letter-spacing: 0.02em;
+  }
+
+
+  .hero__names {
+    font-size: 10px;
+  }
+
+
+  .hero__photo-frame,
+  .hero__bottom {
+    width: 94%;
+  }
+
+
+  .hero__bottom {
+    gap: 10px;
+  }
+
+
+  .hero__date-day {
+    font-size: 43px;
+  }
+
+
+  .hero-countdown__number {
+    font-size: 33px;
+  }
+
+
+  .section {
+    padding-right: 21px;
+    padding-left: 21px;
+  }
+
+
+  .invitation-message {
+    padding-top: 46px;
+  }
+
+
+  .invitation-message__body {
+    font-size: 13px;
+  }
+
+
+  .main-photo-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+}
+
+
+/* =========================================
+  PC
+========================================= */
+
+@media (min-width: 640px) {
+
+  body {
+    padding: 34px 0;
+  }
+
+
+  .invitation {
+    box-shadow:
+      0 18px 60px rgba(31, 37, 28, 0.18);
+  }
+
+
+  .hero {
+    min-height: 900px;
+  }
+
+
+  .hero__title {
+    font-size: 94px;
+    letter-spacing: 0.025em;
+  }
+
+}
