@@ -1,25 +1,4 @@
 /* =========================================
-  City Boy TM
-========================================= */
-
-@font-face {
-  font-family: "City Boy TM";
-
-  /*
-    スマホではWOFF2を優先。
-    読み込めない場合だけOTFを使用。
-  */
-  src:
-    url("../fonts/city-boy-tm.woff2?v=6") format("woff2"),
-    url("../fonts/city-boy-tm.otf?v=6") format("opentype");
-
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-/* =========================================
   カラー設定
 ========================================= */
 
@@ -156,23 +135,22 @@ a {
 
 
 /* =========================================
-  WEDDINGタイトル
+  WEDDINGタイトルSVG
 ========================================= */
 
 .hero__title {
   width: 100%;
+  margin: 0;
+}
 
-  color: var(--moss-green);
 
-  font-family: "City Boy TM", sans-serif;
-  font-size: clamp(66px, 18vw, 94px);
-  font-weight: 400;
+.hero__title-image {
+  display: block;
 
-  line-height: 0.9;
-  letter-spacing: 0.03em;
+  width: 94%;
+  height: auto;
 
-  text-align: center;
-  white-space: nowrap;
+  margin: 0 auto;
 }
 
 
@@ -330,13 +308,17 @@ a {
 }
 
 
+/*
+  カウントダウン数字は
+  スマホでも確実に表示されるBowlby One SC
+*/
 .hero-countdown__number {
-  font-family: "City Boy TM", sans-serif;
-  font-size: 51px;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 43px;
   font-weight: 400;
 
-  line-height: 0.72;
-  letter-spacing: 0.015em;
+  line-height: 0.76;
+  letter-spacing: -0.045em;
 }
 
 
@@ -399,10 +381,6 @@ a {
 }
 
 
-/*
-  WEDDING DAYは削除し、
-  日付のみ左側へまとめる
-*/
 .hero__date-main {
   display: flex;
   align-items: baseline;
@@ -419,13 +397,16 @@ a {
 }
 
 
+/*
+  挙式日の31もBowlby One SC
+*/
 .hero__date-day {
-  font-family: "City Boy TM", sans-serif;
-  font-size: 52px;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 48px;
   font-weight: 400;
 
-  line-height: 0.78;
-  letter-spacing: 0.01em;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
 }
 
 
@@ -610,11 +591,12 @@ a {
 .day-guide__number {
   color: var(--moss-green);
 
-  font-family: "City Boy TM", sans-serif;
-  font-size: 37px;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 33px;
   font-weight: 400;
 
   line-height: 0.9;
+  letter-spacing: -0.035em;
 }
 
 
@@ -747,9 +729,6 @@ a {
   width: 100%;
   height: auto;
 
-  /*
-    白背景をアイボリーへなじませる
-  */
   mix-blend-mode: multiply;
 }
 
@@ -812,9 +791,8 @@ a {
   }
 
 
-  .hero__title {
-    font-size: 61px;
-    letter-spacing: 0.025em;
+  .hero__title-image {
+    width: 96%;
   }
 
 
@@ -839,12 +817,12 @@ a {
 
 
   .hero-countdown__number {
-    font-size: 44px;
+    font-size: 37px;
   }
 
 
   .hero__date-day {
-    font-size: 44px;
+    font-size: 42px;
   }
 
 
@@ -877,7 +855,7 @@ a {
 
 
   .day-guide__number {
-    font-size: 32px;
+    font-size: 29px;
   }
 
 
@@ -910,9 +888,8 @@ a {
   }
 
 
-  .hero__title {
-    font-size: 94px;
-    letter-spacing: 0.03em;
+  .hero__title-image {
+    width: 94%;
   }
 
 }
